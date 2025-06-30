@@ -1,4 +1,5 @@
 from typing import Annotated
+
 from beanie import Document, Indexed
 
 

@@ -1,6 +1,7 @@
-from src.core.services.interfaces import dialogue
-from src.core.repositories.mongodb.dialogue_repo import DialogueRepository
 from src.core.database.models.dialogue import Dialogue
+from src.core.repositories.mongodb.dialogue_repo import DialogueRepository
+from src.core.services.interfaces import dialogue
+
 
 class DialogueService(dialogue.DialogueServiceABC):
 
@@ -13,4 +14,3 @@ class DialogueService(dialogue.DialogueServiceABC):
             dialogue = await self.repo.create(channel_id=channel_id, chat_id=chat_id)
 
         return dialogue
-        

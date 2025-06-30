@@ -1,6 +1,6 @@
-from src.core.services.mongodb.dialogue import dialogue_service
-from src.core.repositories.mongodb import dialogue_repo
+from src.core.repositories.mongodb.dialogue_repo import DialogueRepository
+from src.core.services.mongodb.dialogue.dialogue_service import DialogueService
 
-def get_dialogue_service() -> dialogue_service.DialogueService:
-    return dialogue_service.DialogueService(repo=dialogue_repo.DialogueRepository)
-    
+
+def get_dialogue_service() -> DialogueService:
+    return DialogueService(repo=DialogueRepository())

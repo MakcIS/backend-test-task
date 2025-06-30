@@ -11,6 +11,7 @@ class MessageRole(StrEnum):
 
 
 class DialogueMessage(BaseModel):
+    message_id: str | None = None
     role: MessageRole
     text: str
 
@@ -18,5 +19,4 @@ class DialogueMessage(BaseModel):
 class Dialogue(Document):
     chat_id: str
     channel_id: PydanticObjectId
-    is_blocked: bool = False
     message_list: list[DialogueMessage]
