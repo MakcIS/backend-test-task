@@ -1,6 +1,7 @@
-from beanie import Document
+from typing import Annotated
+from beanie import Document, Indexed
 
 
 class ChatBot(Document):
-    name: str
-    secret_token: str
+    name: Annotated[str, Indexed(unique=True)]
+    secret_token: Annotated[str, Indexed(unique=True)]

@@ -17,5 +17,6 @@ class DialogueMessage(BaseModel):
 
 class Dialogue(Document):
     chat_id: str
-    channal_id: PydanticObjectId
-    message_list: list[DialogueMessage] = []
+    channel_id: PydanticObjectId
+    is_blocked: bool = False
+    message_list: list[DialogueMessage]
