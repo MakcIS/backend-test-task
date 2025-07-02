@@ -1,6 +1,6 @@
 from src.core.database.models.channel import Channel
-from src.core.repositories.interfaces.channel import ChannelRepoABC
 from src.core.entities.channel import ChannelEntity
+from src.core.repositories.interfaces.channel import ChannelRepoABC
 
 
 class ChannelRepository(ChannelRepoABC):
@@ -9,7 +9,7 @@ class ChannelRepository(ChannelRepoABC):
     async def get(self, bot_name: str) -> ChannelEntity | None:
         channel =  await self.model.find_one(self.model.chat_bot_name == bot_name)
         if channel:
-            return ChannelEntity(id=channel.id,
+            return ChannelEntity(channel_id=channel.id,
                                  chat_bot_name=channel.chat_bot_name,
                                  url=channel.url,
                                  token=channel.token)
@@ -20,9 +20,8 @@ class ChannelRepository(ChannelRepoABC):
                              url=url,
                              token=token)
         await channel.insert()
-        return ChannelEntity(id=channel.id,
-                                 chat_bot_name=channel.chat_bot_name,
-                                 url=channel.url,
-                                 token=channel.token)
-    
-    
+        return ChannelEntity(channel_id=channel.id,
+                             chat_bot_name=channel.chat_bot_name,
+                             url=channel.url,
+                             token=channel.token)
+

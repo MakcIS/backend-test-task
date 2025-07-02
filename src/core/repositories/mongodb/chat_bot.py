@@ -1,6 +1,6 @@
 from src.core.database.models.chat_bot import ChatBot
-from src.core.repositories.interfaces.chat_bot import ChatBotRepoABC
 from src.core.entities.chat_bot import ChatBotEntity
+from src.core.repositories.interfaces.chat_bot import ChatBotRepoABC
 
 
 class ChatBotRepository(ChatBotRepoABC):
@@ -11,7 +11,7 @@ class ChatBotRepository(ChatBotRepoABC):
         if bot:
             return ChatBotEntity(bot_name=bot.name, secret_token=bot.secret_token)
         return None
-    
+
     async def create(self, bot_entiti: ChatBotEntity) -> ChatBotEntity:
         bot = self.model(name=bot_entiti.bot_name, secret_token=bot_entiti.secret_token)
         await bot.insert()

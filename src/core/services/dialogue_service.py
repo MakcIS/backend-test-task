@@ -1,9 +1,8 @@
-from src.core.database.models.dialogue import Dialogue
 from core.repositories.mongodb.dialogue import DialogueRepository
+from src.core.database.models.dialogue import Dialogue
 
 
-
-class MessageService():
+class MessageService:
 
     def __init__(self, repo: DialogueRepository):
         self.repo = repo

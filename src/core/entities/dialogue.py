@@ -10,23 +10,23 @@ class DialogueMessageEntity:
         self.text = text
 
 class DialogueEntity:
-    def __init__(self, chat_id:str, channel_id:str, message_list: list[DialogueMessageEntity],  id:str | None = None):
-        self.id = id
+    def __init__(self, chat_id:str, channel_id:str, message_list: list[DialogueMessageEntity],  dialogue_id:str | None = None):
+        self.dialogue_id = dialogue_id
         self.chat_id = chat_id
         self.channel_id = channel_id
         self.message_list = message_list
 
-    def add_message(self, message_id: str, text: str, role: Literal["customer", "employee", None] = None):
-        if role == 'customer':
+    def add_message(self, message_id: str, text: str, role: Literal["customer", "employee", None] = None) -> None:
+        if role == "customer":
             role = MessageRole.USER
-        elif role == 'employee':
+        elif role == "employee":
             role = MessageRole.SYSTEM
         elif role is None:
             message_id = message_id + "answer"
             role = MessageRole.ASSISTANT
         self.message_list.append(DialogueMessageEntity(message_id=message_id, role=role, text=text))
 
-    def id_list(self):
+    def id_list(self) -> list[str]:
         return [msg.message_id for msg in self.message_list]
-    
+
 
